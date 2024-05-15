@@ -3,5 +3,4 @@ import 'package:t_store/app.dart';
 
 void main() {
   runApp(const App());
-
 }
