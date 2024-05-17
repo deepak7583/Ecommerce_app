@@ -23,7 +23,7 @@ class HomeAppBar extends StatelessWidget {
                 .apply(color: TColors.grey),
           ),
           Text(
-            TTexts.homeAppbarSubTitle,
+            'Jhon doe',
             style: Theme.of(context)
                 .textTheme
                 .headlineSmall!
@@ -35,7 +35,7 @@ class HomeAppBar extends StatelessWidget {
         CartMenuIcon(
           icnColor: TColors.white,
           onPressed: () {},
-        )
+        ),
       ],
     );
   }

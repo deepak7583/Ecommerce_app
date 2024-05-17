@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:t_store/common/widgets/common_section_heading.dart';
 import 'package:t_store/common/widgets/custom_searchbar.dart';
+import 'package:t_store/common/widgets/layout/grid_layout.dart';
 import 'package:t_store/common/widgets/primary_header_container.dart';
-import 'package:t_store/common/widgets/vertical_image_section.dart';
+import 'package:t_store/common/widgets/products/products_cart/product_cart_vertical.dart';
+import 'package:t_store/features/shop/screens/home/widget/header_categories.dart';
 import 'package:t_store/features/shop/screens/home/widget/home_app_bar.dart';
+import 'package:t_store/features/shop/screens/home/widget/promo_slider.dart';
 import 'package:t_store/utils/constants/colors.dart';
 import 'package:t_store/utils/constants/image_strings.dart';
 import 'package:t_store/utils/constants/sizes.dart';
@@ -17,46 +20,61 @@ class HomeScreen extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            PrimaryHeaderContainer(
+            const PrimaryHeaderContainer(
               child: Column(
                 children: [
-                  const HomeAppBar(),
+                  HomeAppBar(),
+
                   /// searchbar
-                  const SizedBox(height: TSizes.spaceBtwItems,),
-                  const CustomSearchBar(
+                  SizedBox(
+                    height: TSizes.spaceBtwItems,
+                  ),
+                  CustomSearchBar(
                     text: 'Search in Store',
                     showBackground: true,
                     showBorder: true,
                   ),
-                  const SizedBox(height: TSizes.spaceBtwSections,),
+                  SizedBox(
+                    height: TSizes.spaceBtwSections,
+                  ),
                   Padding(
-                    padding: const EdgeInsets.only(left: TSizes.defaultSpace),
+                    padding: EdgeInsets.only(left: TSizes.defaultSpace),
                     child: Column(
-
                       children: [
-                        const SectionHeading(
+                        SectionHeading(
                           title: 'Popular Categories',
                           showActionButton: false,
                           textColor: TColors.white,
                         ),
-                        const SizedBox(height: TSizes.spaceBtwItems,),
                         SizedBox(
-                          height: 80,
-                          child: ListView.builder(
-                            shrinkWrap: true,
-                            scrollDirection: Axis.horizontal,
-                            itemCount: 6,
-                            itemBuilder: (_, int index) {
-                              return VerticalImageText(
-                                image: TImages.shoeIcon,
-                                text: 'Shoes',
-                                onTap: () {},
-                              );
-                            },
-                          ),
+                          height: TSizes.spaceBtwItems,
                         ),
+                        HeaderCategories(),
                       ],
                     ),
+                  ),
+                ],
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(TSizes.defaultSpace),
+              child: Column(
+                children: [
+                  const PromoSlider(
+                    banners: [
+                      TImages.promoBanner1,
+                      TImages.promoBanner2,
+                      TImages.promoBanner3,
+                    ],
+                  ),
+                  const SizedBox(
+                    height: TSizes.spaceBtwSections,
+                  ),
+                  CustomGridLayout(
+                    itemCount: 4,
+                    itemBuilder: (_, int index) {
+                      return const ProductCartVertical();
+                    },
                   ),
                 ],
               ),
@@ -67,4 +85,3 @@ class HomeScreen extends StatelessWidget {
     );
   }
 }
-
