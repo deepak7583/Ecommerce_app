@@ -12,7 +12,7 @@ class CircularContainer extends StatelessWidget {
     this.child,
     this.bgColor = TColors.white,
     this.margin,
-    this.borderColor = TColors.primary,
+    this.borderColor = TColors.borderPrimary,
     this.showBorder = false,
   });
 

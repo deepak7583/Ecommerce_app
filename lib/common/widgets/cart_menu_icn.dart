@@ -5,11 +5,11 @@ import 'package:t_store/utils/constants/colors.dart';
 class CartMenuIcon extends StatelessWidget {
   const CartMenuIcon({
     super.key,
-    required this.icnColor,
+     this.icnColor,
     required this.onPressed,
   });
 
-  final Color icnColor;
+  final Color? icnColor;
   final VoidCallback onPressed;
 
   @override

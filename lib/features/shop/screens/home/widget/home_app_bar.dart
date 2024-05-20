@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:t_store/common/widgets/app_bar.dart';
+import 'package:t_store/common/widgets/app_bar/app_bar.dart';
 import 'package:t_store/common/widgets/cart_menu_icn.dart';
 import 'package:t_store/utils/constants/colors.dart';
 import 'package:t_store/utils/constants/text_strings.dart';
@@ -31,7 +31,7 @@ class HomeAppBar extends StatelessWidget {
           ),
         ],
       ),
-      action: [
+      actions: [
         CartMenuIcon(
           icnColor: TColors.white,
           onPressed: () {},

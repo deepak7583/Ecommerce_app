@@ -9,14 +9,14 @@ class BaseAppBar extends StatelessWidget implements PreferredSizeWidget {
     this.title,
     this.showBackArrow = false,
     this.leadingIcon,
-    this.action,
+    this.actions,
     this.leadingOnPressed,
   });
 
   final Widget? title;
   final bool showBackArrow;
   final IconData? leadingIcon;
-  final List<Widget>? action;
+  final List<Widget>? actions;
   final VoidCallback? leadingOnPressed;
 
   @override
@@ -37,11 +37,12 @@ class BaseAppBar extends StatelessWidget implements PreferredSizeWidget {
                   )
                 : null,
         title: title,
-        actions: action,
+        actions: actions,
       ),
     );
   }
 
   @override
-  Size get preferredSize => throw UnimplementedError();
+  Size get preferredSize => Size.fromHeight(kToolbarHeight);
+
 }
