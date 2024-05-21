@@ -14,25 +14,22 @@ class PrimaryHeaderContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ClipPathWidget(
-      child: SizedBox(
-        height: 400,
-        child: Container(
-          color: TColors.primary,
-          child: Stack(
-            children: [
-              const Positioned(
-                top: -150,
-                right: -250,
-                child: CircularContainer(),
-              ),
-              const Positioned(
-                top: 100,
-                right: -300,
-                child: CircularContainer(),
-              ),
-              child,
-            ],
-          ),
+      child: Container(
+        color: TColors.primary,
+        child: Stack(
+          children: [
+            const Positioned(
+              top: -150,
+              right: -250,
+              child: CircularContainer(),
+            ),
+            const Positioned(
+              top: 100,
+              right: -300,
+              child: CircularContainer(),
+            ),
+            child,
+          ],
         ),
       ),
     );

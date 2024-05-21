@@ -67,7 +67,7 @@ class StoreScreen extends StatelessWidget {
                     itemCount: 4,
                     itemBuilder: (_, index) {
                       return const BrandCard(
-                        showBorder: false,
+                        showBorder: true,
                       );
                     },
                   ),
@@ -97,7 +97,6 @@ class StoreScreen extends StatelessWidget {
         ];
       },
       body: const TabBarView(
-
         children: [
           CategoryTab(),
           CategoryTab(),
