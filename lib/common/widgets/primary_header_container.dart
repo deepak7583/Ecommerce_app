@@ -13,7 +13,7 @@ class PrimaryHeaderContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ClipPathWidget(
+    return CurvedEdgesWidget(
       child: Container(
         color: TColors.primary,
         child: Stack(

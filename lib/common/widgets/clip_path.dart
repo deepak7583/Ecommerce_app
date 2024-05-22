@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:t_store/common/widgets/custome_curve_ages.dart';
 
-class ClipPathWidget extends StatelessWidget {
-  const ClipPathWidget({
+class CurvedEdgesWidget extends StatelessWidget {
+  const CurvedEdgesWidget({
     super.key,
     this.child,
   });
