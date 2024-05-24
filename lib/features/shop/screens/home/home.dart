@@ -24,19 +24,14 @@ class HomeScreen extends StatelessWidget {
               child: Column(
                 children: [
                   HomeAppBar(),
-
                   /// searchbar
-                  SizedBox(
-                    height: TSizes.spaceBtwItems,
-                  ),
+                  SizedBox(height: TSizes.spaceBtwItems),
                   CustomSearchBar(
                     text: 'Search in Store',
                     showBackground: true,
                     showBorder: true,
                   ),
-                  SizedBox(
-                    height: TSizes.spaceBtwSections,
-                  ),
+                  SizedBox(height: TSizes.spaceBtwSections),
                   Padding(
                     padding: EdgeInsets.only(left: TSizes.defaultSpace),
                     child: Column(
@@ -46,16 +41,12 @@ class HomeScreen extends StatelessWidget {
                           showActionButton: false,
                           textColor: TColors.white,
                         ),
-                        SizedBox(
-                          height: TSizes.spaceBtwItems,
-                        ),
+                        SizedBox(height: TSizes.spaceBtwItems),
                         HeaderCategories(),
                       ],
                     ),
                   ),
-                  SizedBox(
-                    height: TSizes.spaceBtwSections,
-                  ),
+                  SizedBox(height: TSizes.spaceBtwSections),
                 ],
               ),
             ),
@@ -70,16 +61,12 @@ class HomeScreen extends StatelessWidget {
                       TImages.promoBanner3,
                     ],
                   ),
-                  const SizedBox(
-                    height: TSizes.spaceBtwSections,
-                  ),
+                  const SizedBox(height: TSizes.spaceBtwSections),
                   SectionHeading(
                     title: 'Popular Products',
                     onPressed: () {},
                   ),
-                  const SizedBox(
-                    height: TSizes.spaceBtwItems,
-                  ),
+                  const SizedBox(height: TSizes.spaceBtwItems),
                   CustomGridLayout(
                     itemCount: 4,
                     itemBuilder: (_, int index) {
