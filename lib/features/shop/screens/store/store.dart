@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:t_store/common/widgets/app_bar/app_bar.dart';
 import 'package:t_store/common/widgets/app_bar/tab_bar.dart';
-import 'package:t_store/common/widgets/cart_menu_icn.dart';
+import 'package:t_store/common/widgets/products/cart/cart_menu_icn.dart';
 import 'package:t_store/common/widgets/category_tab/category_tab.dart';
 import 'package:t_store/common/widgets/common_section_heading.dart';
 import 'package:t_store/common/widgets/custom_searchbar.dart';
