@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:t_store/bottom_navigation.dart';
 import 'package:t_store/common/widgets/app_bar/app_bar.dart';
 import 'package:t_store/common/widgets/icon/circular_icon.dart';
 import 'package:t_store/common/widgets/layout/grid_layout.dart';
 import 'package:t_store/common/widgets/products/products_cart/product_cart_vertical.dart';
-import 'package:t_store/features/shop/screens/home/home.dart';
 import 'package:t_store/utils/constants/sizes.dart';
 
 class FavouriteScreen extends StatelessWidget {
@@ -21,9 +21,11 @@ class FavouriteScreen extends StatelessWidget {
         ),
         actions: [
           CircularIcon(
-            icon: Iconsax.add,
-            onPressed: () => Get.to(const HomeScreen()),
-          ),
+              icon: Iconsax.add,
+              onPressed: () {
+                debugPrint('tap::');
+                Get.to(const BottomNavigationScreen());
+              }),
         ],
       ),
       body: SingleChildScrollView(

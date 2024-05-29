@@ -7,6 +7,8 @@ import 'package:t_store/common/widgets/list_tile/settings_menu_tile.dart';
 import 'package:t_store/common/widgets/list_tile/user_profile_tile.dart';
 import 'package:t_store/common/widgets/primary_header_container.dart';
 import 'package:t_store/features/personalization/screens/address/address.dart';
+import 'package:t_store/features/shop/screens/cart/cart.dart';
+import 'package:t_store/features/shop/screens/order/order.dart';
 import 'package:t_store/utils/constants/colors.dart';
 import 'package:t_store/utils/constants/sizes.dart';
 
@@ -57,7 +59,7 @@ class SettingsScreen extends StatelessWidget {
             showActionButton: false,
           ),
           const SizedBox(height: TSizes.spaceBtwSections),
-           SettingsMenuTile(
+          SettingsMenuTile(
             icon: Iconsax.safe_home,
             title: 'My Addresses',
             subtitle: 'Set shopping delivery address',
@@ -65,15 +67,21 @@ class SettingsScreen extends StatelessWidget {
               Get.to(const UserAddressScreen());
             },
           ),
-          const SettingsMenuTile(
+          SettingsMenuTile(
             icon: Iconsax.shopping_cart,
             title: 'My Cart',
             subtitle: 'Set shopping delivery address',
+            onTap: () {
+              Get.to(const CartScreen());
+            },
           ),
-          const SettingsMenuTile(
+          SettingsMenuTile(
             icon: Iconsax.bag_tick,
             title: 'My Orders',
             subtitle: 'Set shopping delivery address',
+            onTap: () {
+              Get.to(const OrderScreen());
+            },
           ),
           const SettingsMenuTile(
             icon: Iconsax.bank,
