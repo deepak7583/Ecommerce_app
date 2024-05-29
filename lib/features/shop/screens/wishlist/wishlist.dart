@@ -21,11 +21,12 @@ class FavouriteScreen extends StatelessWidget {
         ),
         actions: [
           CircularIcon(
-              icon: Iconsax.add,
-              onPressed: () {
-                debugPrint('tap::');
-                Get.to(const BottomNavigationScreen());
-              }),
+            icon: Iconsax.add,
+            onPressed: () {
+              debugPrint('tap::');
+              Get.to(const BottomNavigationScreen());
+            },
+          ),
         ],
       ),
       body: SingleChildScrollView(

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:t_store/common/widgets/app_bar/app_bar.dart';
 import 'package:t_store/common/widgets/app_bar/tab_bar.dart';
 import 'package:t_store/common/widgets/products/cart/cart_menu_icn.dart';
@@ -6,7 +7,8 @@ import 'package:t_store/common/widgets/category_tab/category_tab.dart';
 import 'package:t_store/common/widgets/common_section_heading.dart';
 import 'package:t_store/common/widgets/custom_searchbar.dart';
 import 'package:t_store/common/widgets/layout/grid_layout.dart';
-import 'package:t_store/common/widgets/texts/brand_cart.dart';
+import 'package:t_store/common/widgets/brands/brand_cart.dart';
+import 'package:t_store/features/shop/screens/brand/all_brands.dart';
 import 'package:t_store/utils/constants/colors.dart';
 import 'package:t_store/utils/constants/sizes.dart';
 import 'package:t_store/utils/helpers/helper_functions.dart';
@@ -43,25 +45,21 @@ class StoreScreen extends StatelessWidget {
                 shrinkWrap: true,
                 physics: const NeverScrollableScrollPhysics(),
                 children: [
-                  const SizedBox(
-                    height: TSizes.spaceBtwItems,
-                  ),
+                  const SizedBox(height: TSizes.spaceBtwItems),
                   const CustomSearchBar(
                     text: 'Search in store',
                     showBorder: true,
                     showBackground: false,
                     padding: EdgeInsets.zero,
                   ),
-                  const SizedBox(
-                    height: TSizes.spaceBtwItems,
-                  ),
+                  const SizedBox(height: TSizes.spaceBtwItems),
                   SectionHeading(
                     title: 'Feature Brands',
-                    onPressed: () {},
+                    onPressed: () {
+                      Get.to(const AllBrandsScreen());
+                    },
                   ),
-                  const SizedBox(
-                    height: TSizes.spaceBtwItems / 1.5,
-                  ),
+                  const SizedBox(height: TSizes.spaceBtwItems / 1.5),
                   CustomGridLayout(
                     mainAxisExtent: 80,
                     itemCount: 4,
@@ -76,21 +74,11 @@ class StoreScreen extends StatelessWidget {
             ),
             bottom: const CustomTabBar(
               tabs: [
-                Tab(
-                  child: Text('Sports'),
-                ),
-                Tab(
-                  child: Text('Furniture'),
-                ),
-                Tab(
-                  child: Text('Electronics'),
-                ),
-                Tab(
-                  child: Text('Clothes'),
-                ),
-                Tab(
-                  child: Text('Cosmetics'),
-                ),
+                Tab(child: Text('Sports')),
+                Tab(child: Text('Furniture')),
+                Tab(child: Text('Electronics')),
+                Tab(child: Text('Clothes')),
+                Tab(child: Text('Cosmetics')),
               ],
             ),
           ),

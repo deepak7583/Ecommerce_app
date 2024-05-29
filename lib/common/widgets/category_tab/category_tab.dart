@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:t_store/common/widgets/brand_show_case/brand_show_case.dart';
+import 'package:t_store/common/widgets/brands/brand_show_case.dart';
 import 'package:t_store/common/widgets/common_section_heading.dart';
 import 'package:t_store/common/widgets/layout/grid_layout.dart';
 import 'package:t_store/common/widgets/products/products_cart/product_cart_vertical.dart';

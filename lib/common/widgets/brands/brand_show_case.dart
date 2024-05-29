@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:t_store/common/widgets/circular_container.dart';
-import 'package:t_store/common/widgets/texts/brand_cart.dart';
+import 'package:t_store/common/widgets/brands/brand_cart.dart';
 import 'package:t_store/utils/constants/colors.dart';
 import 'package:t_store/utils/constants/sizes.dart';
 import 'package:t_store/utils/helpers/helper_functions.dart';
