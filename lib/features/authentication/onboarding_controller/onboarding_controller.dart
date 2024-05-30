@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:t_store/features/authentication/screens/login.dart';
 
 class OnBoardingController extends GetxController {
@@ -18,20 +20,20 @@ class OnBoardingController extends GetxController {
 
   void nextPage() {
     // Check if currentPageIndex is not null and within bounds
-    if (currentPageIndex != null && currentPageIndex.value >= 0 && currentPageIndex.value < 2) {
-      currentPageIndex.value++; // Increment page index
-      pageController.animateToPage(
-        currentPageIndex.value,
-        duration: const Duration(milliseconds: 300),
-        curve: Curves.easeInOut,
-      );
+    if (currentPageIndex.value == 2) {
+      final storage = GetStorage();
+      if (kDebugMode) {
+        print('============== GET STORAGE NEXT Buttom ===============');
+        print(storage.read('IsFirstTime'));
+      }
+      storage.write('IsFirstTime', false);
+      Get.offAll(const LoginScreen());
     } else {
       // If currentPageIndex is null or out of bounds, navigate to the LoginScreen
-      Get.offAll(const LoginScreen());
+      int page = currentPageIndex.value + 1;
+      pageController.jumpToPage(page);
     }
   }
-
-
 
   void skipPage() {
     Get.offAll(const LoginScreen());
