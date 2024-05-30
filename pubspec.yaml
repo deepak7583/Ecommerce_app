@@ -41,7 +41,7 @@ dependencies:
   firebase_storage: ^11.7.2
 
   # Connectivity
-  connectivity_plus: ^6.0.2
+  connectivity_plus: ^6.0.3
 
 
 
