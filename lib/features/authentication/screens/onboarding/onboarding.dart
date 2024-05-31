@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
-import '../onboarding_controller/onboarding_controller.dart';
-import 'package:t_store/features/authentication/screens/widget/onboard_navigation.dart';
-import 'package:t_store/features/authentication/screens/widget/onboard_widget.dart';
+import 'package:t_store/features/authentication/controllers/onboarding_controller/onboarding_controller.dart';
+import 'package:t_store/features/authentication/screens/onboarding/widget/onboard_navigation.dart';
+import 'package:t_store/features/authentication/screens/onboarding/widget/onboard_widget.dart';
 import 'package:t_store/utils/constants/colors.dart';
 import 'package:t_store/utils/constants/image_strings.dart';
 import 'package:t_store/utils/constants/sizes.dart';
