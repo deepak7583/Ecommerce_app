@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
+
 import 'package:t_store/common/styles/spacing_style.dart';
 import 'package:t_store/common/widgets/common_verticaldivider.dart';
 import 'package:t_store/common/widgets/social_buttons.dart';

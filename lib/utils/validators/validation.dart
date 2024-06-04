@@ -1,5 +1,26 @@
-
 class TValidator {
+  static String? validateName(String? value) {
+    if (value == null || value.isEmpty) {
+      return 'This field is required';
+    }
+    final nameExp = RegExp(r'^[A-Za-z ]+$');
+    if (!nameExp.hasMatch(value)) {
+      return 'Please enter a valid name';
+    }
+    return null;
+  }
+
+  static String? validateUsername(String? value) {
+    if (value == null || value.isEmpty) {
+      return 'Username is required';
+    }
+    final usernameExp = RegExp(r'^[a-zA-Z0-9_]{4,15}$');
+    if (!usernameExp.hasMatch(value)) {
+      return 'Enter a valid username (4-15 characters, letters, numbers, and underscores only)';
+    }
+    return null;
+  }
+
   static String? validateEmail(String? value) {
     if (value == null || value.isEmpty) {
       return 'Email is required.';

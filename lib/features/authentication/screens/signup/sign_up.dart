@@ -1,12 +1,9 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:t_store/common/widgets/common_verticaldivider.dart';
 import 'package:t_store/common/widgets/social_buttons.dart';
 import 'package:t_store/features/authentication/controllers/signup_controller/signup_controller.dart';
-import 'package:t_store/features/authentication/screens/signup/verify_email.dart';
 import 'package:t_store/utils/constants/colors.dart';
 import 'package:t_store/utils/constants/sizes.dart';
 import 'package:t_store/utils/constants/text_strings.dart';
@@ -54,6 +51,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       Expanded(
                         child: TextFormField(
                           controller: controller.firstName,
+                          validator: (value) => TValidator.validateName(value),
                           expands: false,
                           decoration: const InputDecoration(
                             labelText: TTexts.firstName,
@@ -65,6 +63,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       Expanded(
                         child: TextFormField(
                           controller: controller.lastName,
+                          validator: (value) => TValidator.validateName(value),
                           expands: false,
                           decoration: const InputDecoration(
                             labelText: TTexts.lastName,
@@ -77,6 +76,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   const SizedBox(height: TSizes.spaceBtwInputFields),
                   TextFormField(
                     controller: controller.userName,
+                    validator: (value) => TValidator.validateUsername(value),
                     expands: false,
                     decoration: const InputDecoration(
                       labelText: TTexts.username,
@@ -86,6 +86,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   const SizedBox(height: TSizes.spaceBtwInputFields),
                   TextFormField(
                     controller: controller.email,
+                    keyboardType: TextInputType.emailAddress,
                     validator: (value) => TValidator.validateEmail(value),
                     expands: false,
                     decoration: const InputDecoration(
@@ -96,6 +97,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   const SizedBox(height: TSizes.spaceBtwInputFields),
                   TextFormField(
                     controller: controller.phoneNumber,
+                    keyboardType: TextInputType.phone,
                     validator: (value) => TValidator.validatePhoneNumber(value),
                     expands: false,
                     decoration: const InputDecoration(
@@ -116,9 +118,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         suffixIcon: IconButton(
                           onPressed: () => controller.hidePassword.value =
                               !controller.hidePassword.value,
-                          icon: Icon(controller.hidePassword.value
-                              ? Iconsax.eye_slash
-                              : Iconsax.eye),
+                          icon: Icon(
+                            controller.hidePassword.value
+                                ? Iconsax.eye_slash
+                                : Iconsax.eye,
+                          ),
                         ),
                       ),
                     ),
@@ -156,8 +160,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
           child: Obx(
             () => Checkbox(
               value: controller.privacyPolicy.value,
-              onChanged: (value) => controller.privacyPolicy.value =
-                  !controller.privacyPolicy.value,
+              onChanged: (value) => controller.privacyPolicy.value = !controller.privacyPolicy.value,
             ),
           ),
         ),

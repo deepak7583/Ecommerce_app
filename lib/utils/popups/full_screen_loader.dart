@@ -5,11 +5,12 @@ import 'package:t_store/utils/constants/colors.dart';
 import 'package:t_store/utils/helpers/helper_functions.dart';
 
 class FullScreenLoader {
-  static void openLoadingDialog(String text, String animation) {
+  static void openLoadingDialog({required String text, required String animation}) {
+    debugPrint('Loader------>');
     showDialog(
       context: Get.overlayContext!,
       barrierDismissible: false,
-      builder: (BuildContext context) {
+      builder: (_) {
         return PopScope(
           canPop: false,
           child: Container(
