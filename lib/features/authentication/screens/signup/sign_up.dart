@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:t_store/common/widgets/common_verticaldivider.dart';
-import 'package:t_store/common/widgets/social_buttons.dart';
+import 'package:t_store/features/authentication/screens/login/widegts/social_buttons.dart';
 import 'package:t_store/features/authentication/controllers/signup_controller/signup_controller.dart';
 import 'package:t_store/utils/constants/colors.dart';
 import 'package:t_store/utils/constants/sizes.dart';
@@ -51,7 +51,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       Expanded(
                         child: TextFormField(
                           controller: controller.firstName,
-                          validator: (value) => TValidator.validateName(value),
+                          validator: (value) =>
+                              TValidator.validateEmptyText('First name', value),
                           expands: false,
                           decoration: const InputDecoration(
                             labelText: TTexts.firstName,
@@ -63,7 +64,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       Expanded(
                         child: TextFormField(
                           controller: controller.lastName,
-                          validator: (value) => TValidator.validateName(value),
+                          validator: (value) =>
+                              TValidator.validateEmptyText('Last name', value),
                           expands: false,
                           decoration: const InputDecoration(
                             labelText: TTexts.lastName,
@@ -160,7 +162,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
           child: Obx(
             () => Checkbox(
               value: controller.privacyPolicy.value,
-              onChanged: (value) => controller.privacyPolicy.value = !controller.privacyPolicy.value,
+              onChanged: (value) => controller.privacyPolicy.value =
+                  !controller.privacyPolicy.value,
             ),
           ),
         ),

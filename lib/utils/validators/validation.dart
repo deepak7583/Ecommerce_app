@@ -1,11 +1,7 @@
 class TValidator {
-  static String? validateName(String? value) {
+  static String? validateEmptyText(String? fieldName, String? value) {
     if (value == null || value.isEmpty) {
-      return 'This field is required';
-    }
-    final nameExp = RegExp(r'^[A-Za-z ]+$');
-    if (!nameExp.hasMatch(value)) {
-      return 'Please enter a valid name';
+      return '$fieldName is required';
     }
     return null;
   }
