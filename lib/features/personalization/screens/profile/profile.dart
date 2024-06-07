@@ -4,6 +4,7 @@ import 'package:iconsax/iconsax.dart';
 import 'package:t_store/common/widgets/app_bar/app_bar.dart';
 import 'package:t_store/common/widgets/common_section_heading.dart';
 import 'package:t_store/common/widgets/image/circular_image.dart';
+import 'package:t_store/common/widgets/shimmer_effect.dart';
 import 'package:t_store/features/personalization/controllers/user_controller.dart';
 import 'package:t_store/features/personalization/screens/profile/widgets/change_name.dart';
 import 'package:t_store/features/personalization/screens/profile/widgets/profile_menu.dart';
@@ -30,13 +31,20 @@ class ProfileScreen extends StatelessWidget {
                 width: double.infinity,
                 child: Column(
                   children: [
-                    const CircularImage(
-                      image: TImages.user,
-                      width: 80,
-                      height: 80,
-                    ),
+                    Obx(() {
+                      final networkImage = controller.user.value.profilePicture;
+                      final image = networkImage.isNotEmpty ? networkImage : TImages.user;
+                      return controller.imageUploading.value
+                          ? const ShimmerEffect(width: 80, height: 80, radius: 80)
+                          : CircularImage(
+                              image: image,
+                              width: 80,
+                              height: 80,
+                              isNetworkImage: networkImage.isNotEmpty,
+                            );
+                    }),
                     TextButton(
-                      onPressed: () {},
+                      onPressed: () => controller.uploadUserProfilePicture(),
                       child: const Text('Change Profile Picture'),
                     ),
                   ],
@@ -58,12 +66,12 @@ class ProfileScreen extends StatelessWidget {
               ),
               ProfileMenu(
                 title: 'Name',
-                value:  controller.user.value.fullName,
-                onPressed: () => Get.to(()=> const ChangeName()),
+                value: controller.user.value.fullName,
+                onPressed: () => Get.to(() => const ChangeName()),
               ),
               ProfileMenu(
                 title: 'Username',
-                value:  controller.user.value.userName,
+                value: controller.user.value.userName,
                 onPressed: () {},
               ),
               const SizedBox(
@@ -82,18 +90,18 @@ class ProfileScreen extends StatelessWidget {
               ),
               ProfileMenu(
                 title: 'User ID',
-                value:  controller.user.value.id,
+                value: controller.user.value.id,
                 icon: Iconsax.copy,
                 onPressed: () {},
               ),
               ProfileMenu(
                 title: 'E-mail',
-                value:  controller.user.value.email,
+                value: controller.user.value.email,
                 onPressed: () {},
               ),
               ProfileMenu(
                 title: 'Phone Number',
-                value:  controller.user.value.phoneNumber,
+                value: controller.user.value.phoneNumber,
                 onPressed: () {},
               ),
               ProfileMenu(

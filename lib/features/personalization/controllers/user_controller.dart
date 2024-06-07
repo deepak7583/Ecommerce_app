@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:t_store/common/widgets/loaders/loaders.dart';
 import 'package:t_store/data/model/user_model.dart';
 import 'package:t_store/data/repositories/authentication/authentication_repository.dart';
@@ -17,6 +18,7 @@ class UserController extends GetxController {
   final profileLoading = false.obs;
   Rx<UserModel> user = UserModel.empty().obs;
   final hidePassword = false.obs;
+  final imageUploading = false.obs;
   final verifyEmail = TextEditingController();
   final verifyPassword = TextEditingController();
   final userRepository = Get.put(UserRepository());
@@ -44,24 +46,30 @@ class UserController extends GetxController {
   /// save user from any registration provider
   Future<void> saveUserRecord(UserCredential? userCredential) async {
     try {
-      if (userCredential != null) {
-        // Convert name to first  and last name
-        final nameParts =
-            UserModel.nameParts(userCredential.user?.displayName ?? '');
-        final userName =
-            UserModel.generateUserName(userCredential.user?.displayName ?? '');
-        // Map Data
-        final user = UserModel(
-          id: userCredential.user!.uid,
-          userName: userName,
-          email: userCredential.user?.email ?? '',
-          firstName: nameParts[0],
-          lastName: nameParts.length > 1 ? nameParts.sublist(1).join(' ') : '',
-          phoneNumber: userCredential.user?.phoneNumber ?? '',
-          profilePicture: userCredential.user?.photoURL ?? '',
-        );
-        // Save user data
-        await userRepository.saveUserRecord(user);
+      // First update RX user and then check if user data is already stored. if not store new data
+      await fetchUserRecord();
+      // If no record already stored
+      if (user.value.id.isEmpty) {
+        if (userCredential != null) {
+          // Convert name to first  and last name
+          final nameParts =
+              UserModel.nameParts(userCredential.user?.displayName ?? '');
+          final userName = UserModel.generateUserName(
+              userCredential.user?.displayName ?? '');
+          // Map Data
+          final user = UserModel(
+            id: userCredential.user!.uid,
+            userName: userName,
+            email: userCredential.user?.email ?? '',
+            firstName: nameParts[0],
+            lastName:
+                nameParts.length > 1 ? nameParts.sublist(1).join(' ') : '',
+            phoneNumber: userCredential.user?.phoneNumber ?? '',
+            profilePicture: userCredential.user?.photoURL ?? '',
+          );
+          // Save user data
+          await userRepository.saveUserRecord(user);
+        }
       }
     } catch (e) {
       Loaders.warningSnackBar(
@@ -157,6 +165,38 @@ class UserController extends GetxController {
     } catch (e) {
       FullScreenLoader.stopLoading();
       Loaders.warningSnackBar(title: 'Oh Snap!', message: e.toString());
+    }
+  }
+
+  ///
+  uploadUserProfilePicture() async {
+    try {
+      final image = await ImagePicker().pickImage(
+        source: ImageSource.gallery,
+        imageQuality: 70,
+        maxHeight: 512,
+        maxWidth: 512,
+      );
+      if (image != null) {
+        imageUploading.value = true;
+        // Upload Image
+        final imageUrl =
+            await userRepository.uploadImage('Users/Images/Profile', image);
+        // Update user record
+        Map<String, dynamic> json = {'ProfilePicture': imageUrl};
+        await userRepository.updateSingleField(json);
+        user.value.profilePicture = imageUrl;
+        user.refresh();
+        Loaders.successSnackBar(
+          title: 'Congratulations',
+          message: 'Your Profile Image has been updated',
+        );
+      }
+    } catch (e) {
+      Loaders.errorSnackBar(
+          title: 'Oh Snap', message: 'Something went wrong: $e');
+    } finally {
+      imageUploading.value = false;
     }
   }
 }

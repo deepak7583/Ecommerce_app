@@ -16,6 +16,7 @@ class ReAuthLoginForm extends StatelessWidget {
     return Scaffold(
       appBar: const BaseAppBar(
         title: Text('Re-Authenticate User'),
+        showBackArrow: true,
       ),
       body: SingleChildScrollView(
         child: Padding(

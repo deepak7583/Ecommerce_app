@@ -146,12 +146,34 @@ class SettingsScreen extends StatelessWidget {
           SizedBox(
             width: double.infinity,
             child: OutlinedButton(
-              onPressed: () => AuthenticationRepository.instance.logout(),
+              onPressed: () => logoutAccountWarningPopup(),
               child: const Text('Logout'),
             ),
           ),
           const SizedBox(height: TSizes.spaceBtwSections),
         ],
+      ),
+    );
+  }
+
+  void logoutAccountWarningPopup() {
+    Get.defaultDialog(
+      contentPadding: const EdgeInsets.all(TSizes.md),
+      title: 'Logout Account',
+      middleText: 'Are you sure you want to logout your account?',
+      confirm: ElevatedButton(
+        onPressed: () => AuthenticationRepository.instance.logout(),
+        style: ElevatedButton.styleFrom(
+          backgroundColor: TColors.primary,
+        ),
+        child: const Padding(
+          padding: EdgeInsets.symmetric(horizontal: TSizes.lg),
+          child: Text('Yes'),
+        ),
+      ),
+      cancel: OutlinedButton(
+        onPressed: () => Navigator.of(Get.overlayContext!).pop(),
+        child: const Text('No'),
       ),
     );
   }
