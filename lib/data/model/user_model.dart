@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:t_store/utils/formatters/formatter.dart';
 
 class UserModel {
@@ -19,16 +20,16 @@ class UserModel {
     required this.profilePicture,
   });
 
-  ///
+  /// Helper function to get the full name
   String get fullName => '$firstName $lastName';
 
-  ///
+  /// Helper function to format phone number
   String get formattedPhoneNo => TFormatter.formatPhoneNumber(phoneNumber);
 
-  ///
+  /// Static function to split full name into first and last name
   static List<String> nameParts(fullName) => fullName.split(" ");
 
-  ///
+  /// Static function to generate username from the full name
   static String generateUserName(fullName) {
     List<String> nameParts = fullName.split(" ");
     String firstName = nameParts[0].toLowerCase();
@@ -38,7 +39,7 @@ class UserModel {
     return userNameWithPrefix;
   }
 
-  ///
+  /// Static function to create an empty user model
   static UserModel empty() => UserModel(
         id: '',
         userName: '',
@@ -49,7 +50,7 @@ class UserModel {
         profilePicture: '',
       );
 
-  ///
+  /// Convert model to JSON structure for storing data in firebase
   Map<String, dynamic> toJson() {
     return {
       'FirstName': firstName,
@@ -61,21 +62,22 @@ class UserModel {
     };
   }
 
-  ///
-  // factory UserModel.fromSnapshot(
-  //   DocumentSnapshot<Map<String, dynamic>> document,
-  // ) {
-  //   if (document.data() != null) {
-  //     final data = document.data()!;
-  //     return UserModel(
-  //       id: document.id,
-  //       userName: data['UserName'] ?? '',
-  //       email: data['Email'] ?? '',
-  //       firstName: data['FirstName'] ?? '',
-  //       lastName: data['LastName'] ?? '',
-  //       phoneNumber: data['PhoneNumber'] ?? '',
-  //       profilePicture: data['ProfilePicture'] ?? '',
-  //     );
-  //   }
-  // }
+  /// Factory method to create a userModel from a firebase document snapshot
+  factory UserModel.fromSnapshot(
+      DocumentSnapshot<Map<String, dynamic>> document,) {
+    if (document.data() != null) {
+      final data = document.data()!;
+      return UserModel(
+        id: document.id,
+        userName: data['UserName'] ?? '',
+        email: data['Email'] ?? '',
+        firstName: data['FirstName'] ?? '',
+        lastName: data['LastName'] ?? '',
+        phoneNumber: data['PhoneNumber'] ?? '',
+        profilePicture: data['ProfilePicture'] ?? '',
+      );
+    } else {
+      return UserModel.empty();
+    }
+  }
 }
