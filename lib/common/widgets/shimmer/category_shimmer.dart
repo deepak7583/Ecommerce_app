@@ -15,9 +15,7 @@ class CategoryShimmer extends StatelessWidget {
         shrinkWrap: true,
         itemCount: itemCount,
         scrollDirection: Axis.horizontal,
-        itemBuilder: (BuildContext context, int index) =>
-            const SizedBox(height: TSizes.spaceBtwItems),
-        separatorBuilder: (BuildContext context, int index) => const Column(
+        itemBuilder: (_, __) => const Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             /// image
@@ -28,6 +26,8 @@ class CategoryShimmer extends StatelessWidget {
             ShimmerEffect(width: 55, height: 8),
           ],
         ),
+        separatorBuilder: (_, __) =>
+            const SizedBox(width: TSizes.spaceBtwItems),
       ),
     );
   }

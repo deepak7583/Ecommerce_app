@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:t_store/common/widgets/image/circular_image.dart';
 import 'package:t_store/utils/constants/colors.dart';
 import 'package:t_store/utils/constants/sizes.dart';
 import 'package:t_store/utils/helpers/helper_functions.dart';
@@ -11,11 +12,13 @@ class VerticalImageText extends StatelessWidget {
     this.textColor = TColors.white,
     this.bgColor,
     required this.onTap,
+    this.isNetworkImage = true,
   });
 
   final String image, text;
   final Color textColor;
   final Color? bgColor;
+  final bool isNetworkImage;
   final void Function() onTap;
 
   @override
@@ -26,26 +29,15 @@ class VerticalImageText extends StatelessWidget {
         onTap: onTap,
         child: Column(
           children: [
-            Container(
-              width: 56,
-              height: 56,
-              padding: const EdgeInsets.all(TSizes.sm),
-              decoration: BoxDecoration(
-                color: bgColor ??
-                    (THelperFunctions.isDarkMode(context)
-                        ? TColors.black
-                        : TColors.white),
-                borderRadius: BorderRadius.circular(100),
-              ),
-              child: Center(
-                child: Image(
-                  image: AssetImage(image),
-                  fit: BoxFit.cover,
-                  color: THelperFunctions.isDarkMode(context)
-                      ? TColors.light
-                      : TColors.dark,
-                ),
-              ),
+            CircularImage(
+              image: image,
+              fit: BoxFit.fitWidth,
+              padding: TSizes.sm * 1.4,
+              isNetworkImage: isNetworkImage,
+              bgColor: bgColor,
+              overlayColor: THelperFunctions.isDarkMode(context)
+                  ? TColors.light
+                  : TColors.dark,
             ),
             const SizedBox(
               height: TSizes.spaceBtwItems / 2,

@@ -16,7 +16,8 @@ class CategoryController extends GetxController {
     super.onInit();
   }
 
-  Future<void> fetchCategories() async {
+  /// Load category data
+   Future<void> fetchCategories() async {
     try {
       // Show loader while loading categories
       isLoading.value = true;
@@ -30,7 +31,7 @@ class CategoryController extends GetxController {
             .where(
               (category) => category.isFeatured && category.parentId.isEmpty,
             )
-            .take(0)
+            .take(8)
             .toList(),
       );
     } catch (e) {
@@ -40,7 +41,6 @@ class CategoryController extends GetxController {
     }
   }
 
-  /// Load category data
   /// load selected data
   /// Get category or sub category products
 }

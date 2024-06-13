@@ -32,7 +32,7 @@ class HeaderCategories extends StatelessWidget {
         child: ListView.builder(
           shrinkWrap: true,
           scrollDirection: Axis.horizontal,
-          itemCount: 6,
+          itemCount: categoryController.featuredCategories.length ,
           itemBuilder: (_, int index) {
             final category = categoryController.featuredCategories[index];
             return VerticalImageText(

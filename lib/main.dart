@@ -6,7 +6,7 @@ import 'package:get_storage/get_storage.dart';
 import 'package:t_store/app.dart';
 import 'package:t_store/data/repositories/authentication/authentication_repository.dart';
 
-import 'firebase_options.dart';
+import 'firebase/firebase_options.dart';
 
 Future<void> main() async {
   /// widgets windings
