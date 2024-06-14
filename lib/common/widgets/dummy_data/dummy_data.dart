@@ -1,8 +1,14 @@
 
+import 'package:t_store/features/shop/models/bannerr_model.dart';
 import 'package:t_store/features/shop/models/category_model.dart';
+import 'package:t_store/routes/routes.dart';
 import 'package:t_store/utils/constants/image_strings.dart';
 
 class DummyData {
+  /// -- Banners
+  static final List<BannerModel> banners = [
+    BannerModel(imageUrl: TImages.banner1, targetScreen: Routes.store, active: false),
+  ];
   /// -- List of all categories
   static final List<CategoryModel> categories = [
     CategoryModel(id: '1', name: 'Sports', image: TImages.sportIcon, isFeatured: true),
