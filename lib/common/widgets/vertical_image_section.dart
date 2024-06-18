@@ -39,9 +39,7 @@ class VerticalImageText extends StatelessWidget {
                   ? TColors.light
                   : TColors.dark,
             ),
-            const SizedBox(
-              height: TSizes.spaceBtwItems / 2,
-            ),
+            const SizedBox(height: TSizes.spaceBtwItems / 2),
             Text(
               text,
               style: Theme.of(context)

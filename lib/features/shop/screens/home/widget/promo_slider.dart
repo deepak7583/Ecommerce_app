@@ -16,7 +16,6 @@ class PromoSlider extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final controller = Get.put(BannerController());
-    debugPrint('Banner::- ${controller.banners}');
     return Obx(() {
       if (controller.isLoading.value) {
         return const ShimmerEffect(width: double.infinity, height: 190);
@@ -37,7 +36,12 @@ class PromoSlider extends StatelessWidget {
                     (banner) => RoundedImage(
                       imageUrl: banner.imageUrl,
                       isNetworkImage: true,
-                      onPressed: () => Get.toNamed(banner.targetScreen),
+                      onPressed: () {
+                        debugPrint('Banner--2> ${banner.imageUrl}');
+                        debugPrint('Banner--2> ${banner.active}');
+                        debugPrint('Banner--2> ${banner.targetScreen}');
+                        Get.toNamed(banner.targetScreen);
+                      },
                     ),
                   )
                   .toList(),

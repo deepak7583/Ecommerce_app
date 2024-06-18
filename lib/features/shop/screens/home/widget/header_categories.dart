@@ -5,7 +5,6 @@ import 'package:t_store/common/widgets/vertical_image_section.dart';
 import 'package:t_store/features/shop/controllers/category_controller.dart';
 import 'package:t_store/features/shop/screens/sub_category/sub_categories.dart';
 
-
 class HeaderCategories extends StatelessWidget {
   const HeaderCategories({
     super.key,
@@ -32,14 +31,17 @@ class HeaderCategories extends StatelessWidget {
         child: ListView.builder(
           shrinkWrap: true,
           scrollDirection: Axis.horizontal,
-          itemCount: categoryController.featuredCategories.length ,
+          itemCount: categoryController.featuredCategories.length,
           itemBuilder: (_, int index) {
             final category = categoryController.featuredCategories[index];
             return VerticalImageText(
               image: category.image,
               text: category.name,
               onTap: () {
-                Get.to(const SubCategoriesScreen());
+                debugPrint('Category::--> ${category.image}');
+                debugPrint('Category::--> ${category.name}');
+                debugPrint('Category::--> ${category.id}');
+                Get.to(SubCategoriesScreen(title: category.name,));
               },
             );
           },

@@ -13,7 +13,7 @@ class BannerModel {
 
   Map<String, dynamic> toJson() {
     return {
-      'ImageUrl': imageUrl,
+      'Image': imageUrl,
       'TargetScreen': targetScreen,
       'Active': active,
     };
@@ -22,7 +22,7 @@ class BannerModel {
   factory BannerModel.fromSnapshot(DocumentSnapshot snapshot) {
     final data = snapshot.data() as Map<String, dynamic>;
     return BannerModel(
-      imageUrl: data['ImageUrl'] ?? '',
+      imageUrl: data['Image'] ?? '',
       targetScreen: data['TargetScreen'] ?? '',
       active: data['Active'] ?? false,
     );

@@ -36,6 +36,7 @@ class HomeScreen extends StatelessWidget {
                   Padding(
                     padding: EdgeInsets.only(left: TSizes.defaultSpace),
                     child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         SectionHeading(
                           title: 'Popular Categories',
