@@ -17,6 +17,10 @@ dependencies:
   http: ^1.1.0
   intl: ^0.18.1
   logger: ^2.0.1
+  lottie: ^2.7.0
+  shimmer: ^3.0.0
+  image_picker: ^1.1.2
+  cached_network_image: ^3.3.1
   url_launcher: ^6.1.12
   flutter_native_splash: ^2.3.1
   smooth_page_indicator: ^1.1.0
@@ -39,9 +43,12 @@ dependencies:
   # Firebase
   firebase_core: ^2.30.0
   firebase_storage: ^11.7.2
+  firebase_auth: ^4.14.0
+  cloud_firestore: ^4.13.1
+  google_sign_in: ^6.2.1
 
   # Connectivity
-  connectivity_plus: ^6.0.2
+  connectivity_plus: ^5.0.1
 
 
 
@@ -89,3 +96,20 @@ flutter:
           weight: 600
         - asset: assets/fonts/Poppins-Bold.ttf
           weight: 800
+
+flutter_native_splash:
+      color: "#FFFFFF"
+      color_dark: "#000000"
+      android: true
+      ios: true
+      image: assets/logos/t-store-splash-logo-black.png
+      image_dark: assets/logos/t-store-splash-logo-white.png
+
+      android_12:
+        color: "#FFFFFF"
+        color_dark: "#000000"
+        image: assets/logos/t-store-splash-logo-black.png
+        image_dark: assets/logos/t-store-splash-logo-white.png
+
+
+      web: false

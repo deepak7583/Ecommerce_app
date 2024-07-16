@@ -10,7 +10,6 @@ import 'package:t_store/features/shop/screens/home/widget/header_categories.dart
 import 'package:t_store/features/shop/screens/home/widget/home_app_bar.dart';
 import 'package:t_store/features/shop/screens/home/widget/promo_slider.dart';
 import 'package:t_store/utils/constants/colors.dart';
-import 'package:t_store/utils/constants/image_strings.dart';
 import 'package:t_store/utils/constants/sizes.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -37,6 +36,7 @@ class HomeScreen extends StatelessWidget {
                   Padding(
                     padding: EdgeInsets.only(left: TSizes.defaultSpace),
                     child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         SectionHeading(
                           title: 'Popular Categories',
@@ -56,13 +56,7 @@ class HomeScreen extends StatelessWidget {
               padding: const EdgeInsets.all(TSizes.defaultSpace),
               child: Column(
                 children: [
-                  const PromoSlider(
-                    banners: [
-                      TImages.promoBanner1,
-                      TImages.promoBanner2,
-                      TImages.promoBanner3,
-                    ],
-                  ),
+                  const PromoSlider(),
                   const SizedBox(height: TSizes.spaceBtwSections),
                   SectionHeading(
                     title: 'Popular Products',

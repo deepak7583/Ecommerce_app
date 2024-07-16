@@ -7,13 +7,15 @@ import 'package:t_store/utils/constants/image_strings.dart';
 import 'package:t_store/utils/constants/sizes.dart';
 
 class SubCategoriesScreen extends StatelessWidget {
-  const SubCategoriesScreen({super.key});
+  const SubCategoriesScreen({super.key, required this.title});
+
+  final String title;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const BaseAppBar(
-        title: Text('Sports'),
+      appBar: BaseAppBar(
+        title: Text(title),
         showBackArrow: true,
       ),
       body: SingleChildScrollView(
